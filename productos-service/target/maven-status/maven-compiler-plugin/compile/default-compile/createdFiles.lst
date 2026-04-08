@@ -1,7 +1,4 @@
-com\mycompany\tienda\entidades\Orden.class
+com\mycompany\tienda\entidades\Producto.class
 com\mycompany\tienda\servicios\ProductoServiceClient.class
 com\mycompany\tienda\servicios\ProductoResource.class
-com\mycompany\tienda\dto\CrearOrdenRequest.class
 com\mycompany\tienda\dto\ProductoDTO.class
-com\mycompany\tienda\servicios\OrdenResource.class
-com\mycompany\tienda\entidades\Producto.class
