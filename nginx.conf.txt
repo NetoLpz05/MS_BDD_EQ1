@@ -1,0 +1,37 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+    # 1. Microservicio de Productos operando en el puerto 8081
+    upstream productos_service {
+        server localhost:8081;
+    }
+
+    # 2. Microservicio de Órdenes operando en el puerto 8082
+    upstream ordenes_service {
+        server localhost:8082;
+    }
+
+    server {
+        # El API Gateway escuchará en el puerto 80 (puerto HTTP por defecto)
+        listen 80; 
+        server_name localhost;
+
+        # 3. Regla de enrutamiento para Productos
+        location /productos {
+            proxy_pass http://productos_service/productos;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        # 4. Regla de enrutamiento para Órdenes
+        location /ordenes {
+            proxy_pass http://ordenes_service/ordenes;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
