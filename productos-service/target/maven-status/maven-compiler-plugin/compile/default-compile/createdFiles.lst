@@ -1,0 +1,4 @@
+com\mycompany\tienda\entidades\Producto.class
+com\mycompany\tienda\servicios\ProductoServiceClient.class
+com\mycompany\tienda\servicios\ProductoResource.class
+com\mycompany\tienda\dto\ProductoDTO.class
